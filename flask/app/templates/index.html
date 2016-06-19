@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block body %}
+  <section class="header">
+    <h2 class="title">Beer Recommendation Engine</h2>
+  </section>
+  <hr />
+
+  <div class="content">
+    <h1>
+      {% if prediction %}
+      Here are some beers like that one:
+      <h2>
+      {% for beer, pct in prediction %}
+        {{beer}} {{pct}} <br>
+      {%endfor%}
+      </h2>
+      {% else %}
+        Enter the name of a beer.
+      {% endif %}
+    </h1>
+    <form method="POST">
+      {{ form.hidden_tag() }}
+      <div class="row">
+        <div class="three columns">
+          {{ form.beer_input.label }} {{ form.beer_input() }}
+        </div>
+      </div>
+      <div class="row">
+        <button type="submit" class="button-primary">Submit</button>
+      </div>
+    </form>
+  </div>
+{% endblock body %}
+
+{% block js %}
+  <script type="text/javascript">
+
+  </script>
+{% endblock js %}

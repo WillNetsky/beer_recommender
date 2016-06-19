@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>{% block title %}Beer Recommendation Engine{% endblock title %}</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.js"> -->
+
+    {% block header %}{% endblock header %}
+  </head>
+    <body>
+      <div class="container">
+        {% block body %}{% endblock body %}
+      </div>
+      {% block js %}{% endblock js %}
+    </body>
+</html>
