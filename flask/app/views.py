@@ -6,8 +6,7 @@ from wtforms.validators import Required
 from autocomplete.forms import AutocompleteField
 from autocomplete.views import autocomplete_view
 
-import pickle
-import os
+import pandas as pd
 
 from . import app, get_recs_from_input
 
@@ -27,7 +26,7 @@ def index():
 
     """Index page"""
     form = PredictForm()
-    prediction = None
+    prediction = (None, None)
 
     if form.validate_on_submit():
         # store the submitted values
@@ -41,4 +40,4 @@ def index():
         # Return only the Predicted iris species
         prediction = get_recs_from_input(beer_input)
 
-    return render_template('index.html', form=form, prediction=prediction)
+    return render_template('index.html', form=form, beer_inputted = prediction[1], similar_beers=prediction[0])
