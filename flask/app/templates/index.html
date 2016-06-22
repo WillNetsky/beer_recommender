@@ -38,7 +38,16 @@
 {% endblock body %}
 
 {% block js %}
-  <script type="text/javascript">
-
+ <script>
+  $(function() {
+      $.ajax({
+          url: '{{ url_for("autocomplete") }}'
+          }).done(function (data) {
+              $('#beer_input').autocomplete({
+                  source: data.beer,
+                  minLength: 2
+              });
+          });
+      });
   </script>
 {% endblock js %}

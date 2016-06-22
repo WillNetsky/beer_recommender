@@ -9,20 +9,25 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
     <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.js"> -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+    <script type=text/javascript>
+      $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+    </script>
 
 
     {% block header %}{% endblock header %}
   </head>
+
     <body>
       <div class="container">
         {% block body %}{% endblock body %}
       </div>
       {% block js %}{% endblock js %}
-
-
-      <script src='https://code.jquery.com/ui/1.11.4/jquery-ui.js'></script>
     </body>
 </html>
