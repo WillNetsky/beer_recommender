@@ -7,12 +7,12 @@ app = Flask(__name__)
 app.config.from_object("app.config")
 
 # unpickle my model
-#documents = pickle.load(open('app/models/documents.pkl','rb'))
-#dictionary = pickle.load(open('app/models/dictionary.pkl','rb'))
-#lsi = pickle.load(open('app/models/lsi.pkl','rb'))
-#corpus = pickle.load(open('app/models/corpus.pkl','rb'))
+documents = pickle.load(open('app/models/documents.pkl','rb'))
+dictionary = pickle.load(open('app/models/dictionary.pkl','rb'))
+lsi = pickle.load(open('app/models/lsi.pkl','rb'))
+corpus = pickle.load(open('app/models/corpus.pkl','rb'))
 beers = pd.read_pickle('app/models/beer_review_df.pkl')
-#indexx = pickle.load(open('app/models/index.pkl','rb'))
+indexx = pickle.load(open('app/models/index.pkl','rb'))
 
 def get_beer_names():
 	return list(beers.name)

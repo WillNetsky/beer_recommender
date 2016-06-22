@@ -5,16 +5,18 @@ from flask import request
 from flask_wtf import Form
 from wtforms import fields
 from wtforms.validators import Required
-from autocomplete.forms import AutocompleteField
-from autocomplete.views import autocomplete_view
 
 import pandas as pd
+import json
 
 from . import app, get_recs_from_input, get_beer_names, get_brewery_names
 
 
 beer_names = get_beer_names()
 brewery_names = get_brewery_names()
+beer_and_brewery = []
+for beer, brewery in zip(beer_names,brewery_names):
+    beer_and_brewery.append(dict(beer = beer, brewery = brewery))
 
 class PredictForm(Form):
     """Fields for Predict"""
@@ -47,6 +49,6 @@ def index():
 @app.route('/autocomplete', methods=['GET'])
 def autocomplete():
     search = request.args.get('term')
-
     app.logger.debug(search)
-    return jsonify(beer=beer_names,brewery=brewery_names) 
+
+    return jsonify(beer=beer_names,brewery = brewery_names)

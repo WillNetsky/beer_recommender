@@ -46,7 +46,12 @@
               $('#beer_input').autocomplete({
                   source: data.beer,
                   minLength: 2
-              });
+              })
+              .autocomplete( "instance" )._renderItem = function( ul, item ) {
+                return $( "<li>" )
+                  .append( "<a>" + item.label + "</a>" )
+                  .appendTo( ul );
+              };
           });
       });
   </script>
