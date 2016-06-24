@@ -48,7 +48,7 @@ def get_recs_from_input(text_input):
 
     sims = indexx[vec_lsi]
     similar_beers = []
-    for beer in sorted(enumerate(sims), key = lambda x: -x[1])[beer_name_inputted:beer_name_inputted+5]:
+    for beer in sorted(enumerate(sims), key = lambda x: -x[1])[0:beer_name_inputted+5]:
         print(beers.name[beer[0]] + ' : %.2f' % (beer[1]*100))
         similar_beers.append(beer[0])
     similar_beers = beers.iloc[similar_beers]

@@ -2,7 +2,7 @@
 
 {% block body %}
   <section class="header">
-    <h2 class="title">Beer Recommendation Engine</h2>
+    <h2 class="title"><i class="em em-beers"></i>Beer Recommendation Engine<i class="em em-beers"></i></h2>
   </section>
   <hr />
 
@@ -25,24 +25,30 @@
     </form>
     <h4>
       {% if beer_inputted %}
-      {{form.data.beer_input}} can be described as:<br>
+      <a href=http://www.beeradvocate.com{{similar_beers[0][1]}}>{{similar_beers[0][0]}}</a> by <a href={{similar_beers[0][3]}}>{{similar_beers[0][2]}}</a> can be described as:<br>
         {% for word in input_keywords%}
-          {{word}}<br>
-        {% endfor %}
-      Here are some beers like {{form.data.beer_input}}: 
-      <div>
-        <h6>
-          {% for beer in similar_beers %}
-          <a href=http://www.beeradvocate.com{{beer[1]}}>{{beer[0]}}</a> by <a href={{beer[3]}}>{{beer[2]}}</a><br>
-          {% endfor %}
-        </h6>
-      </div>
-      <div>
-        {% for words in similar_keywords %}
-          {% for word in words %}
-            {{word}}
-          {% endfor %}<br>
-        {% endfor %}
+          {{word}}
+        {% endfor %} <br><br>
+      Here are some beers like <a href=http://www.beeradvocate.com{{similar_beers[0][1]}}>{{similar_beers[0][0]}}</a>: 
+      <div id=container>
+        <div id=beer_names>
+          <h6>
+            <strong>Beer and Brewery</strong><br>
+            {% for beer in similar_beers[1:] %}
+            <a href=http://www.beeradvocate.com{{beer[1]}}>{{beer[0]}}</a> by <a href={{beer[3]}}>{{beer[2]}}</a><br>
+            {% endfor %}
+          </h6>
+        </div>
+        <div id=beer_words>
+          <h6>
+            <strong>Similar Keywords</strong><br>
+            {% for words in similar_keywords[1:] %}
+              {% for word in words %}
+                {{word}}
+              {% endfor %}<br>
+            {% endfor %}
+          </h6>
+        </div>
       </div>
       {% endif %}
     </h4>

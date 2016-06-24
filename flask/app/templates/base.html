@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
 
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
@@ -19,7 +20,16 @@
     <script type=text/javascript>
       $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
     </script>
-
+    <style>
+      #beer_names {
+        float: left ;
+        width: 70% ;
+      }
+      #beer_words {
+        float: left;
+        width: 30%;
+      }
+    </style>
 
     {% block header %}{% endblock header %}
   </head>
