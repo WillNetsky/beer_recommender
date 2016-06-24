@@ -25,12 +25,25 @@
     </form>
     <h4>
       {% if beer_inputted %}
-      Here are some beers like {{form.data.beer_input}}:
-      <h6>
-        {% for beer in similar_beers %}
-        <a href=http://www.beeradvocate.com{{beer[1]}}>{{beer[0]}}</a> by <a href={{beer[3]}}>{{beer[2]}}</a><br>
+      {{form.data.beer_input}} can be described as:<br>
+        {% for word in input_keywords%}
+          {{word}}<br>
         {% endfor %}
-      </h6>
+      Here are some beers like {{form.data.beer_input}}: 
+      <div>
+        <h6>
+          {% for beer in similar_beers %}
+          <a href=http://www.beeradvocate.com{{beer[1]}}>{{beer[0]}}</a> by <a href={{beer[3]}}>{{beer[2]}}</a><br>
+          {% endfor %}
+        </h6>
+      </div>
+      <div>
+        {% for words in similar_keywords %}
+          {% for word in words %}
+            {{word}}
+          {% endfor %}<br>
+        {% endfor %}
+      </div>
       {% endif %}
     </h4>
     
@@ -53,6 +66,6 @@
                   .appendTo( ul );
               };
           });
-      });
+  });
   </script>
 {% endblock js %}
