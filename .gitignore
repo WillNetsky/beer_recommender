@@ -1,0 +1,9 @@
+# Python stuff
+*.pyc
+.ipynb_checkpoints
+
+# OS Stuff
+.DS_Store
+
+# Model Stuff
+*.pkl
