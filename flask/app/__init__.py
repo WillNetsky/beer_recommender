@@ -24,7 +24,7 @@ def get_beer_keywords(text_input, similar_beers):
 	for beer in list(similar_beers.index):
 	    similar_beer_words.append([dictionary[item[0]] for
 	    	item in sorted(corpus_tfidf[beer], key = lambda x: -x[1])[:5]
-	    	if dictionary[item[0]] in input_beer_keywords])
+	    	])#if dictionary[item[0]] in input_beer_keywords])
 	return (input_beer_keywords, similar_beer_words)
 
 def get_beer_names():
