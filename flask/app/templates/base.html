@@ -29,6 +29,41 @@
         float: left;
         width: 30%;
       }
+      #dropdwnBrewery {
+        font-weight: lighter;
+        font-size: 0.75em;
+        vertical-align: text-top;
+      }
+      .ui-menu {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: block;
+        outline: none;
+      }
+      .ui-menu .ui-menu {
+        position: absolute;
+      }
+      .ui-menu .ui-menu-item {
+        position: relative;
+        margin: 0;
+        padding: 0px 0em 0px .4em;
+        cursor: pointer;
+        min-height: 0; /* support: IE7 */
+        /* support: IE10, see #8844 */
+        list-style-image: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7");
+      }
+      .ui-menu .ui-menu-divider {
+        margin: 0px 0;
+        height: 0;
+        font-size: 0;
+        line-height: 0;
+        border-width: 1px 0 0 0;
+      }
+      .ui-menu .ui-state-focus,
+      .ui-menu .ui-state-active {
+        margin: -1px;
+      }
     </style>
 
     {% block header %}{% endblock header %}

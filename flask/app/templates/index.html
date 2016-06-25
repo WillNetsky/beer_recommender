@@ -41,7 +41,7 @@
         </div>
         <div id=beer_words>
           <h6>
-            <strong>Similar Keywords</strong><br>
+            <strong>Keywords</strong><br>
             {% for words in similar_keywords[1:] %}
               {% for word in words %}
                 {{word}}
@@ -62,13 +62,16 @@
       $.ajax({
           url: '{{ url_for("autocomplete") }}'
           }).done(function (data) {
+              window.data = data;
               $('#beer_input').autocomplete({
                   source: data.beer,
                   minLength: 2
               })
               .autocomplete( "instance" )._renderItem = function( ul, item ) {
+                beerIdx = data.beer.indexOf(item.label);
+                brewery = data.brewery[beerIdx];
                 return $( "<li>" )
-                  .append( "<a>" + item.label + "</a>" )
+                  .append( "<a>" + item.label + "</a><br><span id=dropdwnBrewery> by " + brewery + "</span>" )
                   .appendTo( ul );
               };
           });
