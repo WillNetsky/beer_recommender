@@ -8,22 +8,19 @@
 
   <div class="content">
     {% if not beer_inputted %}
-      <h1>
+      <h3>
         Enter the name of a beer!
-      </h1>
+      </h3>
     {% endif%}
     <form method="POST">
       {{ form.hidden_tag() }}
-      <div class="row">
-        <div class="three columns">
-          {{ form.beer_input.label }} {{ form.beer_input() }}
-        </div>
-      </div>
-      <div class="row">
+      <div>
+        {{ form.beer_input.label }} {{ form.beer_input() }}
         <button type="submit" class="button-primary">Submit</button>
       </div>
     </form>
     <h4>
+
       {% if beer_inputted %}
       <a href=http://www.beeradvocate.com{{similar_beers[0][1]}}>{{similar_beers[0][0]}}</a> by <a href={{similar_beers[0][3]}}>{{similar_beers[0][2]}}</a> can be described as:<br>
         {% for word in input_keywords%}
@@ -51,6 +48,7 @@
         </div>
       </div>
       {% endif %}
+
     </h4>
     
   </div>
@@ -67,7 +65,7 @@
                   source: function(request, response) {
                     var results = $.ui.autocomplete.filter(data.beer, request.term);
 
-                    response(results.slice(0, 5));
+                    response(results.slice(0, 10));
                   },
                   minLength: 2
               })
@@ -75,7 +73,7 @@
                 beerIdx = data.beer.indexOf(item.label);
                 brewery = data.brewery[beerIdx];
                 return $( "<li>" )
-                  .append( "<a>" + item.label + "</a><br><span id=dropdwnBrewery> by " + brewery + "</span>" )
+                  .append( "<a id=dropdwnBeer>" + item.label + "</a><br><a id=dropdwnBrewery> by " + brewery + "</a>" )
                   .appendTo( ul );
               };
           });

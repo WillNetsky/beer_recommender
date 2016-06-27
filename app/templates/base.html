@@ -29,11 +29,19 @@
         float: left;
         width: 30%;
       }
+      #dropdwnBeer{
+        vertical-align: 
+      }
       #dropdwnBrewery {
         font-weight: lighter;
-        font-size: 0.75em;
+        font-size: 0.5em;
+        color : #999999;
         vertical-align: text-top;
       }
+      a {
+        color: #007889; }
+      a:hover {
+        color: #005a66; }
       .ui-menu {
         list-style: none;
         padding: 0;
@@ -45,10 +53,12 @@
         position: absolute;
       }
       .ui-menu .ui-menu-item {
-        position: relative;
-        margin: 0;
+        position:  relative;
+        margin: 0px;
         padding: 0px 0em 0px;
         cursor: pointer;
+        border-style: groove;
+        border-width: 1px;
         min-height: 0; /* support: IE7 */
         /* support: IE10, see #8844 */
         list-style-image: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7");
@@ -57,13 +67,37 @@
         margin: 0px 0;
         height: 0;
         font-size: 0;
-        line-height: 0;
+        line-height: 1;
         border-width: 3px 0 0 0;
       }
       .ui-menu .ui-state-focus,
       .ui-menu .ui-state-active {
-        margin: -1px;
+        margin: -2px;
       }
+      .ui-autocomplete-input{
+        width : 80%;
+      }
+      .button.button-primary,
+      button.button-primary,
+      input[type="submit"].button-primary,
+      input[type="reset"].button-primary,
+      input[type="button"].button-primary {
+        color: #FFF;
+        background-color: #f4901e;
+        border-color: #f4901e; }
+      .button.button-primary:hover,
+      button.button-primary:hover,
+      input[type="submit"].button-primary:hover,
+      input[type="reset"].button-primary:hover,
+      input[type="button"].button-primary:hover,
+      .button.button-primary:focus,
+      button.button-primary:focus,
+      input[type="submit"].button-primary:focus,
+      input[type="reset"].button-primary:focus,
+      input[type="button"].button-primary:focus {
+        color: #FFF;
+        background-color: #db7a0a;
+        border-color: #db7a0a; }
     </style>
 
     {% block header %}{% endblock header %}
