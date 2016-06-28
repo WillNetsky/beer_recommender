@@ -28,7 +28,7 @@ beer recommendation engine project for Metis
 **result formatting**
 	- [x] links to ba pages  
 	- [x] two columns  
-		+ make this into a table  
+		- [ ]  make this into a table  
 		- [x] one is the beers with ba pages  
 		- [x] one is the keywords between beers  
 			- [ ] the other is the part of the visualization where these beers occur 
