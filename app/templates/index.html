@@ -22,34 +22,37 @@
     <h4>
 
       {% if beer_inputted %}
-      <a href=http://www.beeradvocate.com{{similar_beers[0][1]}}>{{similar_beers[0][0]}}</a> by <a href={{similar_beers[0][3]}}>{{similar_beers[0][2]}}</a> can be described as:<br>
+      <a href=http://www.beeradvocate.com{{similar_beers[0][0][1]}}>{{similar_beers[0][0][0]}}</a> by <a href={{similar_beers[0][0][3]}}>{{similar_beers[0][0][2]}}</a> can be described as:<br>
         {% for word in input_keywords%}
           {{word}}
         {% endfor %} <br><br>
-      Here are some beers like <a href=http://www.beeradvocate.com{{similar_beers[0][1]}}>{{similar_beers[0][0]}}</a>: 
-      <div id=container>
-        <div id=beer_names>
-          <h6>
-            <strong>Beer and Brewery</strong><br>
-            {% for beer in similar_beers[1:] %}
-            <a href=http://www.beeradvocate.com{{beer[1]}}>{{beer[0]}}</a> by <a href={{beer[3]}}>{{beer[2]}}</a><br>
-            {% endfor %}
-          </h6>
-        </div>
-        <div id=beer_words>
-          <h6>
-            <strong>Keywords</strong><br>
-            {% for words in similar_keywords[1:] %}
-              {% for word in words %}
-                {{word}}
-              {% endfor %}<br>
-            {% endfor %}
-          </h6>
-        </div>
-      </div>
+    </h4>
+    <h5>
+      Here are some beers like <a href=http://www.beeradvocate.com{{similar_beers[0][0][1]}}>{{similar_beers[0][0][0]}}</a>: 
+    </h5>
+      <table>
+        <thead>
+          <th>Similar Beer</th>
+          <th>Keywords</th>
+        </thead>
+
+        <tbody>
+          {% for beer in similar_beers[1:] %}
+          <tr>
+            <td>
+            <a href=http://www.beeradvocate.com{{beer[0][1]}}>{{beer[0][0]}}</a> by <a href={{beer[0][3]}}>{{beer[0][2]}}</a>
+            </td>
+            <td>{% for word in beer[1] %}
+                  {{word}}
+                {% endfor %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
       {% endif %}
 
-    </h4>
+
     
   </div>
 {% endblock body %}

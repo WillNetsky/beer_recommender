@@ -32,8 +32,8 @@ def index():
     """Index page"""
     form = PredictForm()
 
-    similar_beers = None
-    beer_keywords = (None, None)
+    similar_beers = [None]*6
+    beer_keywords = (None, [None]*6)
     beer_inputted = False
 
     if form.validate_on_submit():
@@ -54,7 +54,7 @@ def index():
         similar_keywords = beer_keywords[1]
 
 
-    return render_template('index.html', form=form, beer_inputted = beer_inputted, similar_beers=similar_beers, input_keywords = beer_keywords[0], similar_keywords = beer_keywords[1])
+    return render_template('index.html', form=form, beer_inputted = beer_inputted, similar_beers=zip(similar_beers,beer_keywords[1]), input_keywords = beer_keywords[0], similar_keywords = beer_keywords[1])
 
 @app.route('/autocomplete', methods=['GET'])
 def autocomplete():

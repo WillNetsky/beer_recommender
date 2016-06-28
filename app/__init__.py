@@ -8,12 +8,19 @@ app.config.from_object("app.config")
 
 # unpickle my model
 documents = pickle.load(open('app/models/documents.pkl','rb'))
+print 'documents loaded'
 dictionary = pickle.load(open('app/models/dictionary.pkl','rb'))
+print 'dictionary loaded'
 lsi = pickle.load(open('app/models/lsi.pkl','rb'))
+print 'lsi model loaded'
 corpus = pickle.load(open('app/models/corpus.pkl','rb'))
+print 'corpus loaded'
 beers = pd.read_pickle('app/models/beer_review_df.pkl')
+print 'beer_df loaded'
 indexx = pickle.load(open('app/models/index.pkl','rb'))
+print 'index loaded'
 corpus_tfidf = pickle.load(open('app/models/tfidf.pkl','rb'))
+print 'corpus_tfidf loaded'
 
 def get_beer_keywords(text_input, similar_beers):
 	input_beer_keywords = []
