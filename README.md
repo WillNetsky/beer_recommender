@@ -35,4 +35,6 @@ beer recommendation engine project for Metis
 - [x] make text input wider  
 - [ ] search for both beer and brewery  
 
--hop word descriptions  
+**future additions**
+- [ ] hop word descriptions  
+- [ ] beer menus integration  
