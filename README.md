@@ -11,7 +11,9 @@ beer recommendation engine project for Metis
 - [x] remove names of breweries  
 - [x] remove words common to beer names (IPA etc)  
 - [x] remove words with numbers  
-- [ ] lemmatize all words  
+- [x] lemmatize all words  
+	- [ ] clean up some more stopwords
+	- [ ] lemmatize all brewery names and remove them
 - [x] remove all words less than 3 chars (sn, rr, etc)  
   
 **model**
@@ -25,7 +27,7 @@ beer recommendation engine project for Metis
 **Flask App**
 - [x] beer emoji favicon  
 - [x] javascript autocomplete  
-**result formatting**
+	**result formatting**
 	- [x] links to ba pages  
 	- [x] two columns  
 		- [x]  make this into a table  
@@ -33,8 +35,17 @@ beer recommendation engine project for Metis
 		- [x] one is the keywords between beers  
 			- [ ] the other is the part of the visualization where these beers occur 
 - [x] make text input wider  
-- [ ] search for both beer and brewery  
+- [ ] search for both beer and brewery 
+	- [ ] search for style as well 
+- [ ] install watchdog on ec2 box 
+- [x] install gunicorn on ec2 box - sudo apt-get install gunicorn
+
+**PRESENTATION**
+- [x] diagram of data flow
 
 **future additions**
 - [ ] hop word descriptions  
 - [ ] beer menus integration  
+- [ ] taphunter integration  
+- [ ] sql database
+- [ ] pictures
