@@ -49,3 +49,4 @@ beer recommendation engine project for Metis
 - [ ] taphunter integration  
 - [ ] sql database
 - [ ] pictures
+- [ ] take out submit button, must click on autocomplete item to submit 
