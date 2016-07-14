@@ -16,21 +16,18 @@
       {{ form.hidden_tag() }}
       <div>
         {{ form.beer_input.label }} {{ form.beer_input() }}
-        <!--
-        <button type="submit" class="button-primary">Submit</button>
-        -->
       </div>
     </form>
     <h4>
 
       {% if beer_inputted %}
-      <a href=http://www.beeradvocate.com{{similar_beers[0][0][1]}}>{{similar_beers[0][0][0]}}</a> by <a href={{similar_beers[0][0][3]}}>{{similar_beers[0][0][2]}}</a> can be described as:<br>
-        {% for word in input_keywords%}
+      <a href=http://www.beeradvocate.com{{input_beer[0][1]}}>{{input_beer[0][0]}}</a> by <a href={{input_beer[0][3]}}>{{input_beer[0][2]}}</a> can be described as:<br>
+        {% for word in input_beer_keywords[0]%}
           {{word}}
         {% endfor %} <br>
     </h4>
     <h5>
-      Here are some beers like <a href=http://www.beeradvocate.com{{similar_beers[0][0][1]}}>{{similar_beers[0][0][0]}}</a>: 
+      Here are some beers like <a href=http://www.beeradvocate.com{{input_beer[0][1]}}>{{input_beer[0][0]}}</a>: 
     </h5>
       <table>
         <thead>
@@ -39,7 +36,7 @@
         </thead>
 
         <tbody>
-          {% for beer in similar_beers[1:] %}
+          {% for beer in similar_beers %}
           <tr>
             <td>
             <a href=http://www.beeradvocate.com{{beer[0][1]}}>{{beer[0][0]}}</a> by <a href={{beer[0][3]}}>{{beer[0][2]}}</a>
