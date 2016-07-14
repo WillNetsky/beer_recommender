@@ -21,7 +21,7 @@ for beer, brewery in zip(beer_names,brewery_names):
 class PredictForm(Form):
     """Fields for Predict"""
     myChoices = ["one", "two", "three"]
-    beer_input = fields.StringField('Beer Name:', validators=[Required()])
+    beer_input = fields.StringField('Search for a Beer:', validators=[Required()])
 
     submit = fields.SubmitField('Submit')
 
@@ -59,6 +59,6 @@ def index():
 @app.route('/autocomplete', methods=['GET'])
 def autocomplete():
     search = request.args.get('term')
-    app.logger.debug(search)
+    #app.logger.debug(search)
 
     return jsonify(beer=beer_names, brewery = brewery_names)

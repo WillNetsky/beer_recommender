@@ -16,7 +16,9 @@
       {{ form.hidden_tag() }}
       <div>
         {{ form.beer_input.label }} {{ form.beer_input() }}
+        <!--
         <button type="submit" class="button-primary">Submit</button>
+        -->
       </div>
     </form>
     <h4>
@@ -69,6 +71,14 @@
                     var results = $.ui.autocomplete.filter(data.beer, request.term);
 
                     response(results.slice(0, 10));
+                  },
+                  select: function(event, ui) {
+                      //assign value back to the form element
+                      if(ui.item){
+                          $(event.target).val(ui.item.value);
+                      }
+                      //submit the form
+                      $(event.target.form).submit();
                   },
                   minLength: 2
               })
