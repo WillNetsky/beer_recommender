@@ -1,13 +1,19 @@
+from __future__ import print_function
+
 from flask import Flask
 import pickle
 import pandas as pd
 from gensim import similarities
+#from flask_analytics import Analytics
 
 app = Flask(__name__)
 app.config.from_object("app.config")
+#Analytics(app)
+
+#app.config['ANALYTICS']['GAUGES']['SITE_ID'] = 'UA-80821702-1'
 
 beers = pd.read_pickle('app/models/beer_review_df.pkl')
-print 'beer_df loaded'
+#print 'beer_df loaded'
 
 def get_beer_names():
     return list(beers.name)

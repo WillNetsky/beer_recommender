@@ -20,6 +20,7 @@
     <script type=text/javascript>
       $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
     </script>
+
     <style>
       #beer_names {
         float: left ;
@@ -112,11 +113,11 @@
 
     {% block header %}{% endblock header %}
   </head>
-
     <body>
       <div class="container">
         {% block body %}{% endblock body %}
       </div>
       {% block js %}{% endblock js %}
     </body>
+
 </html>

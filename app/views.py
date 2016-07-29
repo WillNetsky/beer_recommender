@@ -62,7 +62,6 @@ def index():
 
     return render_template('index.html', form=form, beer_inputted = beer_inputted,
         similar_beers= similar_beers,
-        similar_beer_keywords = similar_beer_keywords,
         input_beer = input_beer,
         input_beer_keywords = input_beer_keywords)
 

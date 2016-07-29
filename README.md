@@ -12,8 +12,8 @@ beer recommendation engine project for Metis
 - [x] remove words common to beer names (IPA etc)  
 - [x] remove words with numbers  
 - [x] lemmatize all words  
-	- [ ] clean up some more stopwords
-	- [ ] lemmatize all brewery names and remove them
+	- [x] clean up some more stopwords
+	- [x] lemmatize all brewery names and remove them
 - [x] remove all words less than 3 chars (sn, rr, etc)  
   
 **model**
@@ -49,4 +49,4 @@ beer recommendation engine project for Metis
 - [ ] taphunter integration  
 - [ ] sql database
 - [ ] pictures
-- [ ] take out submit button, must click on autocomplete item to submit 
+- [x] take out submit button, must click on autocomplete item to submit 
