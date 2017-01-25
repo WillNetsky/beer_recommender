@@ -2,6 +2,8 @@
 beer recommendation engine project for Metis
 
 # todo  
+- [ ] update this todo, its very behind
+
 **scraping**
 - [x] take all beer styles  
 - [x] scrape every beer with more than 25 hads (~20.8k)
@@ -37,8 +39,6 @@ beer recommendation engine project for Metis
 - [x] make text input wider  
 - [ ] search for both beer and brewery 
 	- [ ] search for style as well 
-- [ ] install watchdog on ec2 box 
-- [x] install gunicorn on ec2 box - sudo apt-get install gunicorn
 
 **PRESENTATION**
 - [x] diagram of data flow
@@ -47,6 +47,6 @@ beer recommendation engine project for Metis
 - [ ] hop word descriptions  
 - [ ] beer menus integration  
 - [ ] taphunter integration  
-- [ ] sql database
+- [x] sql database
 - [ ] pictures
 - [x] take out submit button, must click on autocomplete item to submit 
