@@ -50,3 +50,4 @@ beer recommendation engine project for Metis
 - [x] sql database
 - [ ] pictures
 - [x] take out submit button, must click on autocomplete item to submit 
+- [ ] search capability
