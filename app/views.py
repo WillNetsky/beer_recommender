@@ -2,14 +2,14 @@
 from flask import render_template
 from flask import jsonify
 from flask import request
-from flask_wtf import Form
+from flask_wtf import FlaskForm
 from wtforms import fields
-from wtforms.validators import Required
+from wtforms.validators import Required, AnyOf
 
 import pandas as pd
 import json
 
-from . import app, get_recs_from_input, get_beer_info, get_similar_beer_keywords, get_beer_names, get_brewery_names, get_beer_keywords, similar_beers_formatting
+from . import app, get_beer_names, get_brewery_names, get_beer_info, get_beer_keywords, get_similar_beer_info
 
 
 beer_names = get_beer_names()
@@ -18,10 +18,10 @@ beer_and_brewery = []
 for beer, brewery in zip(beer_names,brewery_names):
     beer_and_brewery.append(dict(beer = beer, brewery = brewery))
 
-class PredictForm(Form):
+class PredictForm(FlaskForm):
     """Fields for Predict"""
     myChoices = ["one", "two", "three"]
-    beer_input = fields.StringField('Search for a Beer:', validators=[Required()])
+    beer_input = fields.StringField('Search for a Beer and Select from the Menu', validators=[Required(),AnyOf(beer_names)])
 
     submit = fields.SubmitField('Submit')
 
@@ -46,19 +46,16 @@ def index():
 
         # Retrieve values from form
         beer_input = submitted_data['beer_input']
-        
+
         # Input beer info
         input_beer = get_beer_info(beer_input)
-        input_beer = similar_beers_formatting(input_beer)
         input_beer_keywords = get_beer_keywords(beer_input)
+        similar_beers = input_beer_keywords[1]
+        input_beer_keywords = input_beer_keywords[0]
 
         # Get similar beer recommendations
-        recs = get_recs_from_input(beer_input)
-        beer_inputted = recs[1]
-        similar_beers = recs[0]
-        similar_beer_keywords = get_similar_beer_keywords(similar_beers)
-        similar_beers = similar_beers_formatting(similar_beers)
-        similar_beers = zip(similar_beers,similar_beer_keywords)
+        beer_inputted = True
+        similar_beers = get_similar_beer_info(similar_beers)
 
     return render_template('index.html', form=form, beer_inputted = beer_inputted,
         similar_beers= similar_beers,

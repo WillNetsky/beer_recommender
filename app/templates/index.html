@@ -7,11 +7,11 @@
   <hr />
 
   <div class="content">
-    {% if not beer_inputted %}
+<!--     {% if not beer_inputted %}
       <h3>
         Enter the name of a beer!
       </h3>
-    {% endif%}
+    {% endif%} -->
     <form method="POST">
       {{ form.hidden_tag() }}
       <div>
@@ -21,13 +21,13 @@
     <h4>
 
       {% if beer_inputted %}
-      <a href=http://www.beeradvocate.com{{input_beer[0][1]}}>{{input_beer[0][0]}}</a> by <a href={{input_beer[0][3]}}>{{input_beer[0][2]}}</a> can be described as:<br>
-        {% for word in input_beer_keywords[0]%}
+      <a href=http://www.beeradvocate.com{{input_beer[1]}}>{{input_beer[0]}}</a> by <a href={{input_beer[3]}}>{{input_beer[2]}}</a> can be described as:<br>
+        {% for word in input_beer_keywords%}
           {{word}}
         {% endfor %} <br>
     </h4>
     <h5>
-      Here are some beers like <a href=http://www.beeradvocate.com{{input_beer[0][1]}}>{{input_beer[0][0]}}</a>: 
+      Here are some beers like <a href=http://www.beeradvocate.com{{input_beer[1]}}>{{input_beer[0]}}</a>: 
     </h5>
       <table>
         <thead>

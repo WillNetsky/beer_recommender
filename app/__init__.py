@@ -4,45 +4,67 @@ from flask import Flask
 import pickle
 import pandas as pd
 from gensim import similarities
-#from flask_analytics import Analytics
+
+import sqlalchemy
+
+import config
 
 app = Flask(__name__)
 app.config.from_object("app.config")
-#Analytics(app)
 
-#app.config['ANALYTICS']['GAUGES']['SITE_ID'] = 'UA-80821702-1'
-
+engine = sqlalchemy.create_engine(config.SQL_URL)
 beers = pd.read_pickle('app/models/beer_review_df.pkl')
-#print 'beer_df loaded'
+beer_names = list(beers.name)
+brewery_names = list(beers.brewery_name)
+beers = None
 
 def get_beer_names():
-    return list(beers.name)
+    return beer_names
 
 def get_brewery_names():
-    return list(beers.brewery_name)
+    return brewery_names
 
 def get_beer_keywords(text_input):
-	beer_keywords = list(beers[beers.name == text_input].keywords)
-	return (beer_keywords)
+    connection = engine.connect()
+    t = sqlalchemy.sql.expression.text('select * from beers where name = :name')
+    sql_result = connection.execute(t,name = text_input)
+    result = sql_result.first()
+    connection.close()
+    return ([result['kw1'],result['kw2'],result['kw3'],result['kw4'],result['kw5']],
+            [result['sim_id_1'],result['sim_id_2'],result['sim_id_3'],result['sim_id_4'],result['sim_id_5']])
 
-def get_similar_beer_keywords(similar_beers):
-    keywords = list(similar_beers.keywords)
-    return keywords
+def get_similar_beer_info(similar_beers):
+    connection = engine.connect()
+    query = 'select * from beers where '
+    
+    query += 'index = ' + str(similar_beers[0])
+    for beer in similar_beers[1:]:
+        query += ' or index = ' + str(beer)
+        
+    sql_result = connection.execute(query)
+    
+    names = []
+    urls = []
+    breweries = []
+    websites = []
+    all_keywords = []
+    for row in sql_result:
+        names.append(row['name'])
+        urls.append(row['url'])
+        breweries.append(row['brewery_name'])
+        websites.append(row['brewery_website'])
+        keywords = [row['kw1'],row['kw2'],row['kw3'],row['kw4'],row['kw5']]
+        all_keywords.append(keywords)
+    connection.close()
+    return zip(zip(names,urls,breweries,websites),all_keywords)
 
 def get_beer_info(text_input):
-    beer_info = beers[beers.name == text_input]
-    return beer_info
-
-def get_recs_from_input(text_input):
-    beer_name_inputted = True
-
-    similar_beer_ids = list(beers[beers.name == text_input].similar_beers)
-    similar_beers = [beer[0] for beer in similar_beer_ids[0]]
-    similar_beers = beers.iloc[similar_beers]
-    return (similar_beers ,beer_name_inputted)
-
-def similar_beers_formatting(beers):
-    return zip(list(beers.name),list(beers.url),list(beers.brewery_name),list(beers.brewery_website))
+    connection = engine.connect()
+    t = sqlalchemy.sql.expression.text('select * from beers where name = :name')
+    sql_result = connection.execute(t,name = text_input)
+    result = sql_result.first()
+    connection.close()
+    return (result['name'],result['url'],result['brewery_name'],result['brewery_website'])
 
 from .views import *
 
