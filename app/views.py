@@ -9,14 +9,15 @@ from wtforms.validators import Required, AnyOf
 import pandas as pd
 import json
 
-from . import app, get_beer_names, get_brewery_names, get_beer_info, get_beer_keywords, get_similar_beer_info
+from . import app, get_beer_names, get_brewery_names, get_beer_info, get_beer_keywords, get_similar_beer_info, get_search_strings
 
 
 beer_names = get_beer_names()
 brewery_names = get_brewery_names()
+search_strings = get_search_strings()
 beer_and_brewery = []
-for beer, brewery in zip(beer_names,brewery_names):
-    beer_and_brewery.append(dict(beer = beer, brewery = brewery))
+# for beer, brewery in zip(beer_names,brewery_names):
+#     beer_and_brewery.append(dict(beer = beer, brewery = brewery))
 
 class PredictForm(FlaskForm):
     """Fields for Predict"""
@@ -67,4 +68,4 @@ def autocomplete():
     search = request.args.get('term')
     #app.logger.debug(search)
 
-    return jsonify(beer=beer_names, brewery = brewery_names)
+    return jsonify(beer=beer_names, brewery = brewery_names, search_string = search_strings)

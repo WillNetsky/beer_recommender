@@ -16,6 +16,7 @@ engine = sqlalchemy.create_engine(config.SQL_URL)
 beers = pd.read_pickle('app/models/beer_review_df.pkl')
 beer_names = list(beers.name)
 brewery_names = list(beers.brewery_name)
+search_strings = list(beers.search_string)
 beers = None
 
 def get_beer_names():
@@ -23,6 +24,9 @@ def get_beer_names():
 
 def get_brewery_names():
     return brewery_names
+
+def get_search_strings():
+    return search_strings
 
 def get_beer_keywords(text_input):
     connection = engine.connect()

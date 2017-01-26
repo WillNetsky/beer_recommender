@@ -65,25 +65,28 @@
               window.data = data;
               $('#beer_input').autocomplete({
                   source: function(request, response) {
-                    var results = $.ui.autocomplete.filter(data.beer, request.term);
+                    var results = $.ui.autocomplete.filter(data.search_string, request.term);
 
                     response(results.slice(0, 10));
                   },
                   select: function(event, ui) {
                       //assign value back to the form element
                       if(ui.item){
-                          $(event.target).val(ui.item.value);
+                          beerIdx = data.search_string.indexOf(ui.item.label)
+                          beer = data.beer[beerIdx];
+                          $(event.target).val(beer);
                       }
                       //submit the form
                       $(event.target.form).submit();
                   },
-                  minLength: 2
+                  minLength: 3
               })
               .autocomplete( "instance" )._renderItem = function( ul, item ) {
-                beerIdx = data.beer.indexOf(item.label);
+                beerIdx = data.search_string.indexOf(item.label);
+                beer    = data.beer[beerIdx];
                 brewery = data.brewery[beerIdx];
                 return $( "<li>" )
-                  .append( "<a id=dropdwnBeer>" + item.label + "</a><br><a id=dropdwnBrewery> by " + brewery + "</a>" )
+                  .append( "<a id=dropdwnBeer>" + beer + "</a><br><a id=dropdwnBrewery> by " + brewery + "</a>" )
                   .appendTo( ul );
               };
           });
