@@ -9,7 +9,7 @@ gensim==0.13.1
 itsdangerous==0.24
 Jinja2==2.8
 MarkupSafe==0.23
-numpy==1.11.0
+numpy==1.22.0
 pandas==0.18.1
 python-dateutil==2.5.3
 pytz==2016.4
